@@ -9,7 +9,10 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Welcome to The AI-rport Terminal.</Text>
+      <Text style={{
+        fontSize:30,
+        fontFamily:'outfit-bold'
+      }}>Welcome to The AI-rport Terminal.</Text>
     </View>
   );
 }
