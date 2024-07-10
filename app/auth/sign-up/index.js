@@ -1,29 +1,31 @@
-import { View, Text } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput } from "react-native";
 import React, { useEffect } from "react";
 import { useNavigation, useRouter } from "expo-router";
-import { Colors } from "./../../../constants/Colors";
-import { TextInput } from "react-native-gesture-handler";
-import { TouchableOpacity } from "react-native-web";
+import { Colors } from "@/constants/Colors";
 import { Ionicons } from '@expo/vector-icons';
 
 export default function SignUp() {
   const navigation = useNavigation();
-  const route=useRouter(); 
+  const router = useRouter(); 
+
   useEffect(() => {
     navigation.setOptions({
-      headerShow: false,
-    });
+      headerShown: false,
+    })
   }, []);
+
   return (
     <View
       style={{
         padding: 25,
-        marginTop: 60,
+        marginTop: 35,
         backgroundColor: Colors.WHITE,
         height: "100%",
       }}
     >
-        <Ionicons name="arrow-back" size={24} color="black" />
+      <TouchableOpacity onPress={()=>router.back()}>
+        <Ionicons name='arrow-back' size={24} color='black' />
+      </TouchableOpacity>
       <Text
         style={{
           fontFamily: "outfit-bold",
@@ -37,6 +39,7 @@ export default function SignUp() {
           marginTop: 50,
         }}
       >
+        {/* User Full Name */}
         <Text
           style={{
             fontFamily: "outfit",
@@ -97,7 +100,7 @@ export default function SignUp() {
         </Text>
       </View>
       <TouchableOpacity
-      onPress={() => navigation.replace("auth/sign-in")}
+      onPress={() => router.replace("auth/sign-in")}
         style={{
           padding: 20,
           backgroundColor: Colors.WHITE,

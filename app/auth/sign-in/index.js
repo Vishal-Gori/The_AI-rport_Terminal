@@ -1,32 +1,33 @@
-import { View, Text } from "react-native";
-import React, { useEffect } from "react";
-import { useNavigation, useRouter } from "expo-router";
-import { Colors } from "./../../../constants/Colors";
-import { TextInput } from "react-native-gesture-handler";
-import { TouchableOpacity } from "react-native-web";
+import { View, Text, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import React, { useEffect } from 'react';
+import { useNavigation, useRouter } from 'expo-router';
+import { Colors } from '@/constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function SignIn() {
   const navigation = useNavigation();
-  const route=useRouter(); 
+  const router = useRouter(); 
+
   useEffect(() => {
     navigation.setOptions({
-      headerShow: false,
-    });
+      headerShown: false,
+    })
   }, []);
   return (
     <View
       style={{
         padding: 25,
-        marginTop: 60,
+        marginTop: 35,
         backgroundColor: Colors.WHITE,
-        height: "100%",
+        height: '100%',
       }}
     >
-      <Ionicons name="arrow-back" size={24} color="black" />
+      <TouchableOpacity onPress={()=>router.back()}>
+        <Ionicons name='arrow-back' size={24} color='black' />
+      </TouchableOpacity>
       <Text
         style={{
-          fontFamily: "outfit-bold",
+          fontFamily: 'outfit-bold',
           fontSize: 30,
         }}
       >
@@ -34,7 +35,7 @@ export default function SignIn() {
       </Text>
       <Text
         style={{
-          fontFamily: "outfit",
+          fontFamily: 'outfit',
           fontSize: 30,
           color: Colors.GRAY,
           marginTop: 20,
@@ -44,7 +45,7 @@ export default function SignIn() {
       </Text>
       <Text
         style={{
-          fontFamily: "outfit",
+          fontFamily: 'outfit',
           fontSize: 30,
           color: Colors.GRAY,
           marginTop: 20,
@@ -52,6 +53,7 @@ export default function SignIn() {
       >
         You have been missed
       </Text>
+      {/* Email */}
       <View
         style={{
           marginTop: 50,
@@ -59,13 +61,15 @@ export default function SignIn() {
       >
         <Text
           style={{
-            fontFamily: "outfit",
+            fontFamily: 'outfit',
           }}
         >
           Email
         </Text>
-        <TextInput style={styles.input} placeholder="Enter Your Email" />
+        <TextInput style={styles.input} placeholder='Enter Your Email' />
       </View>
+
+      {/* Password */}
       <View
         style={{
           marginTop: 20,
@@ -73,18 +77,18 @@ export default function SignIn() {
       >
         <Text
           style={{
-            fontFamily: "outfit",
+            fontFamily: 'outfit',
           }}
         >
           Password
         </Text>
         <TextInput
           secureTextEntry={true}
-          type="password"
           style={styles.input}
-          placeholder="Enter Your password"
+          placeholder='Enter Your password'
         />
       </View>
+      {/* Sign-In button */}
       <View
         style={{
           padding: 20,
@@ -96,14 +100,16 @@ export default function SignIn() {
         <Text
           style={{
             color: Colors.WHITE,
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
-          Sign in
+          Sign In
         </Text>
       </View>
+
+      {/* Create Account Button */}
       <TouchableOpacity
-      onPress={() => navigation.replace("auth/sign-up")}
+      onPress={() => router.replace('auth/sign-up')}
         style={{
           padding: 20,
           backgroundColor: Colors.WHITE,
@@ -115,7 +121,7 @@ export default function SignIn() {
         <Text
           style={{
             color: Colors.PRIMARY,
-            textAlign: "center",
+            textAlign: 'center',
           }}
         >
           Create Account
@@ -132,6 +138,6 @@ const styles = StyleSheet.create({
     borderColor: Colors.GRAY,
     marginBottom: 20,
     borderRadius: 15,
-    fontFamily: "outfit",
+    fontFamily: 'outfit',
   },
 });

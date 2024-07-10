@@ -1,9 +1,13 @@
-import { View, Text , Image} from 'react-native'
+import { View, Text , Image, TouchableOpacity} from 'react-native'
 import { StyleSheet } from 'react-native'
 import React from 'react'
 import { Colors } from '@/constants/Colors'
+import { useRouter } from 'expo-router'
 
 export default function Login() {
+
+    const router = useRouter();
+
   return (
     <View>
       <Image source={require('./../assets/images/login.jpg')}
@@ -28,21 +32,16 @@ export default function Login() {
             }}>
                 Discover your next adventure effortlessly. Personalized itineraries at your fingertips. Travel smarter with AI-driven insights
             </Text>
-            <View style={styles.button}>
-                <Image source={require('./../assets/images/google-logo.png')}
-                    style={{
-                        marginRight:20,
-                        height:30,
-                        width:30
-                    }}
-                />
+            <TouchableOpacity style={styles.button}
+                onPress={()=>router.navigate('auth/sign-in')}
+            >
                 <Text style={{
                     color:Colors.WHITE,
                     textAlign:'center',
                     fontFamily:'outfit',
                     fontSize:17
-                }}>Sign-In with Google</Text>
-            </View>
+                }}>Get Started</Text>
+            </TouchableOpacity>
         </View>
     </View>
   )
