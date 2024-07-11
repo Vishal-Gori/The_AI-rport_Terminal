@@ -36,6 +36,8 @@ export default function SignUp() {
         // Signed up
         const user = userCredential.user;
         console.log(user);
+        ToastAndroid.show("User Created Successfully", ToastAndroid.TOP);
+        router.replace('/mytrip')
         // ...
       })
       .catch((error) => {
@@ -55,7 +57,7 @@ export default function SignUp() {
         height: "100%",
       }}
     >
-      <TouchableOpacity onPress={() => router.back()}>
+      <TouchableOpacity onPress={() => router.back()} style={{marginBottom:25}}>
         <Ionicons name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
       <Text
@@ -87,7 +89,7 @@ export default function SignUp() {
       </View>
       <View
         style={{
-          marginTop: 50,
+          marginTop: 20,
         }}
       >
         <Text

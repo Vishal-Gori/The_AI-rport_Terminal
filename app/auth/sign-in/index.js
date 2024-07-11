@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   TextInput,
+  ToastAndroid,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useNavigation, useRouter } from "expo-router";
@@ -30,6 +31,8 @@ export default function SignIn() {
         const user = userCredential.user;
         console.log("Signed in successfully", user);
         // You can redirect or perform further actions here
+        ToastAndroid.show("Login Successful", ToastAndroid.CENTER);
+        router.replace('/mytrip');
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -45,7 +48,7 @@ export default function SignIn() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={() => router.back()}>
+      <TouchableOpacity onPress={() => router.back()} style={{marginBottom:25}}>
         <Ionicons name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
       <Text style={styles.title}>Let's Sign you In</Text>
@@ -115,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   inputContainer: {
-    marginTop: 50,
+    marginTop: 30,
   },
   label: {
     fontFamily: "outfit",
