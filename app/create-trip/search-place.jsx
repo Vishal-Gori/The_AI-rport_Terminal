@@ -1,22 +1,23 @@
 import { View, Text } from 'react-native'
 import React, { useContext, useEffect } from 'react'
-import { useNavigation } from 'expo-router'
+import { useNavigation, useRouter } from 'expo-router'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import {Colors} from './../../constants/Colors'
 import {CreateTripContext} from './../../context/createTripContext'
 
 
-export default function SeachPlace() {
+export default function SearchPlace() {
   const navigation= useNavigation();
   const {tripData, setTripData}=useContext(CreateTripContext);
+  const router= useRouter();
   useEffect(()=>{
     navigation.setOptions({
         headerShown:true,
         headerTransparent:true,
-        headerTitle: 'Search Place'
+        headerTitle: 'Search Place' 
     });
   },[])
-
+  
   useEffect(()=>{
     console.log(tripData);
   },[setTripData])
@@ -41,6 +42,7 @@ export default function SeachPlace() {
                 url:details?.url
             }
         })
+        router.push('/create-trip/select-traveler')
       }}
       query={{
         key: 'YOUR API KEY',
